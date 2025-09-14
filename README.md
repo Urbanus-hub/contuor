@@ -1,12 +1,52 @@
-# React + Vite
+# Contuor Furniture – Modern Interior Design React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Contuor Furniture**, a modern, responsive React application for a furniture and interior design studio. This project is built with [Vite](https://vitejs.dev/) for lightning-fast development and leverages a beautiful, consistent UI theme throughout.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern, Responsive UI**: Tailwind CSS-powered layouts for all devices.
+- **Home, About, Services, Blog, Contact**: Professionally designed pages with unique hero sections.
+- **Authentication**: Register and log in with styled forms (Appwrite integration ready).
+- **Cart & Shop**: Add, view, and manage products in a stylish cart.
+- **Profile & Orders**: User profile dropdown and order history (profile logic ready).
+- **Testimonials & Team**: Dynamic testimonials and team showcase.
+- **Appwrite Integration**: Easily connect to Appwrite for authentication and data (see `src/utils/appwrite.js`).
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Set up environment variables:**
+   - Copy `.env.example` to `.env` and fill in your Appwrite credentials.
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser:**  
+   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+## Project Structure
+
+- `src/components/` – All React components (Header, Footer, Home, About, Services, Blog, Contact, Auth, Cart, etc.)
+- `src/utils/` – Appwrite configuration and helpers
+- `public/images/` – All images and icons
+
+## Customization
+
+- **Theme colors** are defined in Tailwind config and used throughout.
+- **Hero sections** and buttons are easily customizable in each page component.
+- **Appwrite**: Update `src/utils/server.js` with your Appwrite project details.
+
+## Credits
+
+- Built with [React](https://react.dev/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/), and [Appwrite](https://appwrite.io/).
+- Design inspired by modern furniture and interior brands.
+
+---
+
+> **Contuor Furniture** – Transforming spaces with comfort, beauty, and style.
