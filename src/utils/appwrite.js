@@ -9,10 +9,13 @@ const client = new Client()
                 
 
 
-
+// for creating accounts
 export const account = new Account(client);
 // export const users = new Users(client); // Uncomment and complete if needed, or remove if not used
+// for databases actions
 export const databases= new Databases(client);
+export const id= ID; // unique id for user
+
 
 
 

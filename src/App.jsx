@@ -1,6 +1,6 @@
 import React ,{createContext} from 'react'
 import Header from './components/Header'
-import { Route,Routes } from 'react-router-dom'
+import { Route,Routes,useNavigate} from 'react-router-dom'
 import Shop from './components/Shop'
 import About from './components/About'
 import Services from './components/Services'
@@ -8,8 +8,11 @@ import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Home from './components/Home'
 import Footer from './components/Footer'
+import Register from './components/Register'
+import Login from './components/LogIn'
 export const CraftContext=createContext();
 const App = () => {
+  
   const whyUs=[
     {
       image:"images/truck.svg",
@@ -41,6 +44,8 @@ const App = () => {
       <Route path="/services" element={<Services/>}/>
       <Route path="/blog" element={<Blog/>}/>
       <Route path="/contact" element={<Contact/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/login" element={<Login/>}/>
     </Routes>
   </CraftContext.Provider>
   <Footer/>

@@ -9,7 +9,8 @@ const Blog = () => {
         {/* content */}
         <div className='lg:w-[35%] w-full flex flex-col gap-5 text-center lg:text-left'>
           <h1 className="text-white lg:text-5xl text-2xl sm:text-3xl md:text-4xl font-black mb-[30px] lg:mb-0 mt-10 lg:mt-0">Blog</h1>
-          <p className='text-[#9DAEA2] mb-[24px] text-sm md:text-base'>Transform your space with curated pieces that blend comfort, beauty, and modern design for inspired living.</p>
+          <p className='text-[#9DAEA2] mb-[24px] text-sm md:text-base'>Discover our latest stories, design tips, and inspiration. Stay connected with trends, expert advice, and behind-the-scenes insights from our creative team.
+</p>
           <div className='flex flex-col sm:flex-row gap-5 justify-center lg:justify-start'>
             <button className='px-8 py-3 rounded-full bg-[#F8B810] border-0 font-medium text-[17px] cursor-pointer'>Shop Now</button>
             <button className='px-8 py-3 border-2 rounded-full border-white/50 cursor-pointer text-white'>Explore</button>

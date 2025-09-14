@@ -1,6 +1,6 @@
 import React from 'react'
 import { CraftCard } from './Home'
-
+// import Cart from './Cart'
 const Shop = () => {
   const crafts = [
     {
