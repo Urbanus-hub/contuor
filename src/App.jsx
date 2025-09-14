@@ -10,6 +10,9 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/LogIn'
+import Profile from './components/Profile'
+import Cart from './components/Cart'
+// import { ToastContainer } from 'react-toastify';
 export const CraftContext=createContext();
 const App = () => {
   
@@ -46,6 +49,8 @@ const App = () => {
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/profile" element={<Profile/>}/>
+      <Route path="/cart" element={<Cart/>}/>
     </Routes>
   </CraftContext.Provider>
   <Footer/>

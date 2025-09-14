@@ -37,8 +37,8 @@ function Header() {
       </div>
       
       {/* nav links */}
-      <div className={`lg:w-[60%] md:w-[70%] w-full md:h-full md:flex md:flex-row md:items-center md:justify-center lg:justify-end absolute md:static md:bg-transparent bg-[#3B5D50] z-50 top-full left-0 h-[52vh] ${active ? "flex flex-col" : "hidden"} sm:justify-between rounded-b-md transition-all duration-300`}>
-        <ul className='flex flex-col gap-6 py-8 px-5 md:gap-4 md:w-[85%] lg:w-[80%] md:justify-between lg:justify-around md:flex-row md:py-0 md:px-0 lg:gap-4 w-full items-start md:items-center justify-center'>
+      <div className={`lg:w-[70%]  md:w-[70%] w-full md:h-full md:flex md:flex-row md:items-center md:justify-center lg:justify-end absolute md:static md:bg-transparent bg-[#3B5D50] z-50 top-full left-0 h-[60vh] ${active ? "flex flex-col" : "hidden"} sm:justify-between rounded-b-md transition-all duration-300 sm:px-18`}>
+        <ul className='flex flex-col gap-6 py-8 px-5 md:gap-4  lg:w-[90%] md:justify-between lg:justify-around md:flex-row md:py-0 md:px-0 lg:gap-4 w-full items-start md:items-center justify-center'>
           <li>
             <Link to="/" className={navLinkClass("/")}>Home</Link>
           </li>
@@ -60,30 +60,49 @@ function Header() {
         </ul>
         
         {/* Mobile Account Section */}
-        <div className='w-full md:hidden flex items-center justify-between px-5 py-4'>
-          <div className='flex items-center gap-4'>
-            {loggedIn ? (
+        <div className='w-full md:hidden px-5 pt-2 pb-4'>
+          {loggedIn ? (
+            <div className='flex items-center lg:justify-between gap-3'>
               <Link 
                 to="/profile" 
-                className='flex items-center justify-center w-12 h-12 rounded-full bg-[#F8B810] hover:bg-[#E6A50A] transition-all duration-200 shadow-lg hover:shadow-xl'
+                className='flex items-center gap-3 px-4 py-3 rounded-xl bg-[#F8B810]/20 border border-[#F8B810]/30 hover:bg-[#F8B810]/30 transition-all duration-200 backdrop-blur-sm'
               >
-                <img src="images/user.svg" alt="user" className='w-6 h-6' />
+                <div className='w-10 h-10 rounded-full bg-[#F8B810] flex items-center justify-center shadow-md'>
+                  <img src="images/user.svg" alt="user" className='w-5 h-5' />
+                </div>
+                <span className='text-white font-medium text-sm'>Profile</span>
               </Link>
-            ) : (
+              <Link 
+                to="/cart" 
+                className='flex items-center justify-center w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 transition-all duration-200 backdrop-blur-sm border border-white/20'
+              >
+                <img src="images/cart.svg" alt="cart" className='w-6 h-6' />
+              </Link>
+            </div>
+          ) : (
+            <div className='flex flex-col gap-3'>
               <Link
                 to="/login"
-                className="px-6 py-2.5 rounded-full bg-transparent border-2 border-white text-white font-semibold hover:bg-white hover:text-[#3B5D50] transition-all duration-200"
+                className="w-full py-3 px-6 rounded-xl bg-transparent border-2 border-[#F8B810] text-[#F8B810] font-semibold hover:bg-[#F8B810] hover:text-black transition-all duration-200 text-center"
               >
                 Log In
               </Link>
-            )}
-          </div>
-          <Link 
-            to="/cart" 
-            className='flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200 backdrop-blur-sm border border-white/20'
-          >
-            <img src="images/cart.svg" alt="cart" className='w-6 h-6' />
-          </Link>
+              <div className='flex items-center justify-between'>
+                <Link
+                  to="/register"
+                  className="flex-1 py-3 px-6 rounded-xl bg-[#F8B810] text-black font-semibold hover:bg-[#E6A50A] transition-all duration-200 text-center mr-3"
+                >
+                  Sign Up
+                </Link>
+                <Link 
+                  to="/cart" 
+                  className='flex items-center justify-center w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 transition-all duration-200 backdrop-blur-sm border border-white/20'
+                >
+                  <img src="images/cart.svg" alt="cart" className='w-6 h-6' />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       
@@ -121,4 +140,4 @@ function Header() {
   )
 } 
 
-export default Header
+export default Header;
