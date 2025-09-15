@@ -70,7 +70,10 @@ const Cart = () => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8">
+    <div className="bg-[#EFF2F1]">
+
+    
+    <div className="w-full max-w-6xl mx-auto px-4 py-10 mb-15 sm:px-25 md:px-18">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Shopping Cart</h1>
@@ -240,6 +243,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -37,8 +37,8 @@ function Header() {
       </div>
       
       {/* nav links */}
-      <div className={`lg:w-[70%]  md:w-[70%] w-full md:h-full md:flex md:flex-row md:items-center md:justify-center lg:justify-end absolute md:static md:bg-transparent bg-[#3B5D50] z-50 top-full left-0 h-[60vh] ${active ? "flex flex-col" : "hidden"} sm:justify-between rounded-b-md transition-all duration-300 sm:px-18`}>
-        <ul className='flex flex-col gap-6 py-8 px-5 md:gap-4  lg:w-[90%] md:justify-between lg:justify-around md:flex-row md:py-0 md:px-0 lg:gap-4 w-full items-start md:items-center justify-center'>
+      <div className={`lg:w-[70%]  md:w-[80%]  w-full md:h-full md:flex md:flex-row md:items-center  lg:justify-end absolute md:static md:bg-transparent bg-[#3B5D50] z-50 top-full left-0 h-[60vh] ${active ? "flex flex-col sm:px-20" : "hidden sm:px-3"} sm:justify-end rounded-b-md transition-all duration-300 `}>
+        <ul className='flex flex-col gap-4 py-8 px-5   md:w-[90%]  lg:w-[80%]  lg:justify-around md:flex-row md:py-0 md:px-0 lg:gap-4 w-full items-start md:items-center justify-center md:justify-between'>
           <li>
             <Link to="/" className={navLinkClass("/")}>Home</Link>
           </li>
