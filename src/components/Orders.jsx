@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {toast} from 'sonner';
 import { Package, Truck, CheckCircle, Clock, XCircle, RefreshCw, Eye, Download, Search } from 'lucide-react';
 
 const Orders = () => {
@@ -161,20 +162,25 @@ const Orders = () => {
   const handleReorder = (orderItems) => {
     // In a real app, this would add items to cart
     console.log('Reordering items:', orderItems);
-    alert('Items added to cart!');
+    toast.success("Items added to cart!", {
+            style: { backgroundColor: "#22c55e", color: "white" }
+          });
   };
 
   const handleDownloadInvoice = (orderId) => {
     // In a real app, this would download an invoice
     console.log('Downloading invoice for order:', orderId);
-    alert(`Invoice for ${orderId} downloaded!`);
+     toast.success(`Invoice for ${orderId} downloaded!`, {
+            style: { backgroundColor: "#22c55e", color: "white" }
+          });
+    
   };
 
   const OrderDetailsModal = ({ order, onClose }) => {
     if (!order) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+      <div className="fixed inset-0 bg-white/50 bg-opacity-50 flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-6 border-b border-gray-200">
             <div className="flex justify-between items-center">
