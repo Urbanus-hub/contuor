@@ -12,6 +12,9 @@ import Register from './components/Register'
 import Login from './components/LogIn'
 import Profile from './components/Profile'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+import { Toaster,toast } from "sonner";
+import Orders from './components/Orders'
 // import { ToastContainer } from 'react-toastify';
 export const CraftContext=createContext();
 const App = () => {
@@ -38,6 +41,8 @@ const App = () => {
    
   return (
     <>
+    <Toaster position="bottom-right" richColors closeButton />
+    {/* <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark"/> */} 
     <Header/>
     <CraftContext.Provider value={whyUs}>
     <Routes>
@@ -51,9 +56,13 @@ const App = () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/cart" element={<Cart/>}/>
+      <Route path="/orders" element={<Orders/>}/>
+    <Route path="/checkout" element={<Checkout/>}/>
     </Routes>
   </CraftContext.Provider>
   <Footer/>
+ 
+ 
     </>
   
   )

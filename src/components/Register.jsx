@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import { Eye, EyeOff, User, Mail, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import {account,id} from '../utils/appwrite';
+import { toast } from "sonner";
+
 
 
 const Register = () => {
@@ -26,10 +28,13 @@ const Register = () => {
       console.log(form);
       setIsLoading(false);
     promise.then(function (response) {
-    alert("account created successfully"); // Success
+   
+    toast.success("Account created successfully!", {
+            style: { backgroundColor: "#22c55e", color: "white" }
+          })// Success
     navigate("/login");
 }, function (error) {
-    alert(error.message);
+    toast(error.message);
     console.log(error); // Failure
 });
       // Add your registration logic here

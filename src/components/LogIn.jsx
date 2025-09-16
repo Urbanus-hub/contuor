@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, LogIn, AlertCircle } from "lucide-react";
 import { Link, useNavigate } from 'react-router-dom';
 import {account} from '../utils/appwrite';
+import { toast } from "sonner";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -25,11 +26,11 @@ const Login = () => {
       setIsLoading(false);
       // Add your login logic here
       promise.then(function (response) {
-        alert("logged in successfully");
+        toast("logged in successfully");
         navigate("/");
     console.log(response); // Success
 }, function (error) {
-    alert(error.message);
+    toast(error.message);
     console.log(error); // Failure
 });
     }, 1500);
