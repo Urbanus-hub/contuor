@@ -37,7 +37,7 @@ const Register = () => {
     toast(error.message);
     console.log(error); // Failure
 });
-      // Add your registration logic here
+      
     }, 1500);
   };
 

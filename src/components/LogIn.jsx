@@ -3,7 +3,7 @@ import { Eye, EyeOff, Mail, Lock, LogIn, AlertCircle } from "lucide-react";
 import { Link, useNavigate } from 'react-router-dom';
 import {account} from '../utils/appwrite';
 import { toast } from "sonner";
-
+ 
 const Login = () => {
   const [form, setForm] = useState({
     email: "",
@@ -27,7 +27,10 @@ const Login = () => {
       // Add your login logic here
       promise.then(function (response) {
         toast("logged in successfully");
-        navigate("/");
+        if(response.ok){
+
+          navigate("/");
+        }
     console.log(response); // Success
 }, function (error) {
     toast(error.message);
