@@ -16,13 +16,23 @@ function Header() {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        await account.get();
-        setLoggedIn(true);
+        const response = await account.get();
+        if (response) {
+          setLoggedIn(!!response);
+        }
       } catch {
         setLoggedIn(false);
       }
     };
     checkSession();
+    const handleAuthChange = () => checkSession();
+    window.addEventListener("appwrite-login", handleAuthChange);
+    window.addEventListener("appwrite-logout", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("appwrite-login", handleAuthChange);
+      window.removeEventListener("appwrite-logout", handleAuthChange);
+    };
   }, []);
 
   // Reset menu state when location changes

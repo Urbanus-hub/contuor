@@ -19,24 +19,25 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const promise=account.createEmailPasswordSession(form.email,form.password);
-    // Simulate API call
-    setTimeout(() => {
-      console.log(form);
+    try {
+      // Create email session with Appwrite
+      await account.createEmailPasswordSession(form.email, form.password);
+      
+      // Show success message
+      toast.success("Logged in successfully");
+      // After successful login
+window.dispatchEvent(new Event("appwrite-login"));
+      
+      // Reset loading state
       setIsLoading(false);
-      // Add your login logic here
-      promise.then(function (response) {
-        toast("logged in successfully");
-        if(response.ok){
-
-          navigate("/");
-        }
-    console.log(response); // Success
-}, function (error) {
-    toast(error.message);
-    console.log(error); // Failure
-});
-    }, 1500);
+      
+      // Redirect to home page
+      navigate("/");
+    } catch (error) {
+      // Handle error
+      toast.error(error.message || "Login failed. Please check your credentials.");
+      setIsLoading(false);
+    }
   };
 
   return (

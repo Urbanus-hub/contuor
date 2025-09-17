@@ -66,6 +66,8 @@ function Profile() {
     try {
       setLoading(true);
       await account.deleteSession('current');
+      // After successful logout
+ window.dispatchEvent(new Event("appwrite-logout")); 
       window.location.href = '/login';
     } catch (error) {
       console.error('Error logging out:', error);
