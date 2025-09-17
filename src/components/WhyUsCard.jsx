@@ -18,7 +18,7 @@ export function WhyUs({image,title,description}){
 }
 
 function WhyUsCard(){
-    const whyUs=useContext(CraftContext)
+    const {whyUs}=useContext(CraftContext)
   return(
     <div className='w-full px-5 sm:px-10 md:px-16 lg:px-25 h-auto lg:h-[100vh] flex flex-col lg:flex-row justify-between py-10 lg:py-0 lg:mb-25  '>
         <div className='w-full lg:w-[60%] mb-10 lg:mb-0'>

@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext,useState,useEffect } from "react";
 import Header from "./components/Header";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Shop from "./components/Shop";
@@ -19,6 +19,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import { ToastContainer } from 'react-toastify';
 export const CraftContext = createContext();
 const App = () => {
+
+const [cartItems, setCartItems] = useState(() => {
+  const storedCartItems = localStorage.getItem("cartItems");
+  return storedCartItems ? JSON.parse(storedCartItems) : [];
+});
+
+useEffect(() => {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}, [cartItems]);
+
   const whyUs = [
     {
       image: "images/truck.svg",
@@ -51,7 +61,7 @@ const App = () => {
       <Toaster position="bottom-right" richColors closeButton />
       {/* <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark"/> */}
       <Header />
-      <CraftContext.Provider value={whyUs}>
+      <CraftContext.Provider value={{ whyUs, cartItems, setCartItems }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />

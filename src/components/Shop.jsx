@@ -1,49 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { CraftCard } from './Home'
+import { CraftContext } from '../App';
+import {crafts} from '../utils/items'
 // import Cart from './Cart'
 const Shop = () => {
-  const crafts = [
-    {
-      image: "images/product-1.png",
-      title: "Nordic Chair",
-      price: 50.00,
-    },
-    {
-      image: "images/product-2.png",
-      title: "Cruzo Aero Chair",
-      price: 78.50,
-    },
-    {
-      image: "images/product-3.png",
-      title: "Ergonomic Chair",
-      price: 43.00,
-    },
-    {
-      image: "images/product-1.png",
-      title: "Nordic Chair",
-      price: 50.00,
-    },
-    {
-      image: "images/product-2.png",
-      title: "Cruzo Aero Chair",
-      price: 78.50,
-    },
-    {
-      image: "images/product-3.png",
-      title: "Ergonomic Chair",
-      price: 43.00,
-    },
-    {
-      image: "images/product-2.png",
-      title: "Cruzo Aero Chair",
-      price: 78.50,
-    },
-    {
-      image: "images/product-3.png",
-      title: "Ergonomic Chair",
-      price: 43.00,
-    }
-  ];
+  const {cartItems,setCartItems}=React.useContext(CraftContext)
+  
+  
+
   return (
     <div className='min-h-[100vh] w-full bg-[#EFF2F1] '>
       <div className='h-[20vh] lg:h-[40vh] w-full bg-[#3B5D50] flex flex-col justify-center items-start'>
@@ -56,7 +20,7 @@ const Shop = () => {
         {
           crafts.map((craft,index)=>(
               
-            <CraftCard key={index} image={craft.image} title={craft.title} price={craft.price}/>
+            <CraftCard key={index} image={craft.image} title={craft.title} price={craft.price} id={craft.id}/>
           ))
         }
        
