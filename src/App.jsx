@@ -1,4 +1,4 @@
-import React, { createContext,useState,useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import Header from "./components/Header";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Shop from "./components/Shop";
@@ -19,15 +19,14 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import { ToastContainer } from 'react-toastify';
 export const CraftContext = createContext();
 const App = () => {
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  });
 
-const [cartItems, setCartItems] = useState(() => {
-  const storedCartItems = localStorage.getItem("cartItems");
-  return storedCartItems ? JSON.parse(storedCartItems) : [];
-});
-
-useEffect(() => {
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}, [cartItems]);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const whyUs = [
     {
@@ -58,7 +57,75 @@ useEffect(() => {
 
   return (
     <>
-      <Toaster position="bottom-right" richColors closeButton />
+      <Toaster
+        position="bottom-right"
+        richColors
+        closeButton
+        expand={true}
+        duration={4000}
+        toastOptions={{
+          style: {
+            background: "linear-gradient(135deg, #3B5D50 0%, #4A6B5E 100%)",
+
+            color: "white",
+            fontSize: "16px",
+            fontWeight: "600",
+            padding: "16px 20px",
+            borderRadius: "16px",
+            boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+            backdropFilter: "blur(10px)",
+            minHeight: "70px",
+          },
+          className: "animate-in slide-in-from-right-full duration-300",
+          closeButton: {
+            style: {
+              background: "#F8B810",
+              color: "#3B5D50",
+              border: "none",
+              borderRadius: "50%",
+              width: "24px",
+              height: "24px",
+              fontSize: "14px",
+              fontWeight: "bold",
+              boxShadow: "0 4px 8px rgba(248, 184, 16, 0.3)",
+              transition: "all 0.2s ease",
+            },
+          },
+          success: {
+            style: {
+              background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+              border: "2px solid #34D399",
+              color: "white",
+            },
+            iconTheme: {
+              primary: "#34D399",
+              secondary: "white",
+            },
+          },
+          error: {
+            style: {
+              background: "linear-gradient(135deg, #EF4444 0%, #DC2626 100%)",
+              border: "2px solid #F87171",
+              color: "white",
+            },
+            iconTheme: {
+              primary: "#F87171",
+              secondary: "white",
+            },
+          },
+          loading: {
+            style: {
+              background: "linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)",
+              border: "2px solid #818CF8",
+              color: "white",
+            },
+            iconTheme: {
+              primary: "#818CF8",
+              secondary: "white",
+            },
+          },
+        }}
+      />
       {/* <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark"/> */}
       <Header />
       <CraftContext.Provider value={{ whyUs, cartItems, setCartItems }}>
@@ -72,23 +139,31 @@ useEffect(() => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
 
-          
-            <Route path="/profile" element={
+          <Route
+            path="/profile"
+            element={
               <ProtectedRoute>
-              <Profile />
+                <Profile />
               </ProtectedRoute>
-              } />
+            }
+          />
 
-            <Route path="/orders" element={
+          <Route
+            path="/orders"
+            element={
               <ProtectedRoute>
                 <Orders />
               </ProtectedRoute>
-            } />
-            <Route path="/checkout" element={
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
               <ProtectedRoute>
                 <Checkout />
               </ProtectedRoute>
-            } />
+            }
+          />
 
           <Route path="/cart" element={<Cart />} />
         </Routes>

@@ -1,32 +1,42 @@
-import React, { useState } from 'react';
-import { MapPin, Mail, Phone } from 'lucide-react';
+import React, { useState } from "react";
+import { MapPin, Mail, Phone } from "lucide-react";
+import { toast } from "sonner";
 // import { createdummyAccount } from '../utils/appwrite';
-import { saveContact } from '../utils/contactAction';
+import { saveContact } from "../utils/contactAction";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
   });
-
+  const [submitting, setSubmitting] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-   const response=await saveContact(formData); 
-   console.log(response); 
-    
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
+    try {
+      setSubmitting(true);
+      await saveContact(formData);
+      toast.success("Message sent successfully!");
+    } catch (err) {
+      toast.error(err.message || "Failed to send message. Please try again.");
+    } finally {
+      setSubmitting(false);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+      });
+    }
   };
 
   return (
@@ -41,23 +51,29 @@ export default function ContactForm() {
                   <MapPin className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
                 <div>
-                  <div className="font-medium lg:font-semibold">43 Raymouth Rd. Baltemoer,</div>
+                  <div className="font-medium lg:font-semibold">
+                    43 Raymouth Rd. Baltemoer,
+                  </div>
                   <div className="text-gray-600">London 3910</div>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 lg:flex-1">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#3B5D50] rounded-lg flex items-center justify-center shadow-lg">
                   <Mail className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div className="font-medium lg:font-semibold">info@yourdomain.com</div>
+                <div className="font-medium lg:font-semibold">
+                  info@yourdomain.com
+                </div>
               </div>
-              
+
               <div className="flex items-center gap-3 lg:flex-1">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#3B5D50] rounded-lg flex items-center justify-center shadow-lg">
                   <Phone className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div className="font-medium lg:font-semibold">+1 294 3925 3939</div>
+                <div className="font-medium lg:font-semibold">
+                  +1 294 3925 3939
+                </div>
               </div>
             </div>
           </div>
@@ -71,7 +87,10 @@ export default function ContactForm() {
                 {/* Name fields */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3">
+                    <label
+                      htmlFor="firstName"
+                      className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3"
+                    >
                       First name
                     </label>
                     <input
@@ -84,9 +103,12 @@ export default function ContactForm() {
                       placeholder="Enter your first name"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="lastName" className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3">
+                    <label
+                      htmlFor="lastName"
+                      className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3"
+                    >
                       Last name
                     </label>
                     <input
@@ -103,7 +125,10 @@ export default function ContactForm() {
 
                 {/* Email field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3"
+                  >
                     Email address
                   </label>
                   <input
@@ -120,7 +145,10 @@ export default function ContactForm() {
 
                 {/* Message field */}
                 <div>
-                  <label htmlFor="message" className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm lg:text-base font-medium text-gray-800 mb-2 lg:mb-3"
+                  >
                     Message
                   </label>
                   <textarea
@@ -140,9 +168,10 @@ export default function ContactForm() {
                   <button
                     type="submit"
                     onClick={handleSubmit}
+                    disabled={submitting}
                     className="bg-[#3B5D50] hover:bg-[#294037] text-white font-medium lg:font-semibold py-3 lg:py-4 px-8 lg:px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:ring-4 focus:ring-[#3B5D50]/30 focus:outline-none shadow-md active:scale-95"
                   >
-                    Send Message
+                    {submitting ? "submitting" : "Send Message"}
                   </button>
                 </div>
               </div>
