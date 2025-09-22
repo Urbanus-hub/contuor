@@ -1,5 +1,6 @@
 import React from "react";
 import WhyUsCard from "../components/WhyUsCard";
+import { Link } from "react-router-dom";
 import { CraftContext } from "../App";
 import { Toaster, toast } from "sonner";
 export function BlogCard() {
@@ -47,10 +48,10 @@ export function BlogCard() {
   );
 }
 
-export function CraftCard({ image, title, price,id }) {
+export function CraftCard({ image, title, price, id }) {
   const { cartItems, setCartItems } = React.useContext(CraftContext);
   function addToCart(item) {
-    setCartItems([...cartItems, {...item,quantity:1}]);
+    setCartItems([...cartItems, { ...item, quantity: 1 }]);
     toast.success("Item added to cart!", {
       style: { backgroundColor: "#22c55e", color: "white" },
     });
@@ -73,7 +74,9 @@ export function CraftCard({ image, title, price,id }) {
       </div>
 
       <button
-        onClick={() => addToCart({ image: image, title: title, price: price ,id:id})}
+        onClick={() =>
+          addToCart({ image: image, title: title, price: price, id: id })
+        }
         className="bg-black absolute bottom-[-20px] w-[40px] h-[40px] left-1/2 transform -translate-x-1/2 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
         <svg
@@ -177,9 +180,13 @@ const Home = () => {
             and modern design for inspired living.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-            <button className="px-8 py-3 rounded-full bg-[#F8B810] border-0 font-medium text-[17px] cursor-pointer">
-              Shop Now
-            </button>
+            <Link
+              to="/shop"
+              className="px-8 py-3 rounded-full bg-[#F8B810] border-0 font-medium text-[17px] cursor-pointer text-center"
+            >
+              shop now
+            </Link>
+
             <button className="px-8 py-3 border-2 rounded-full border-white/50 cursor-pointer text-white">
               Explore
             </button>
