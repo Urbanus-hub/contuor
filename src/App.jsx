@@ -62,7 +62,7 @@ const App = () => {
         richColors
         closeButton
         expand={true}
-        duration={4000}
+        duration={1000}
         toastOptions={{
           style: {
             background: "linear-gradient(135deg, #3B5D50 0%, #4A6B5E 100%)",
